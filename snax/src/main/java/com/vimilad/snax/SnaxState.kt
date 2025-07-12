@@ -39,13 +39,15 @@ class SnaxState {
         title: String? = null,
         actionTitle: String? = null,
         action: (() -> Unit)? = null,
+        onDismiss: (() -> Unit)? = null
     ) {
         _data.value = SnaxData(
             type = type,
             message = message,
             title = title,
             actionTitle = actionTitle,
-            action = action
+            action = action,
+            onDismiss = onDismiss
         )
         updateState = !updateState
     }

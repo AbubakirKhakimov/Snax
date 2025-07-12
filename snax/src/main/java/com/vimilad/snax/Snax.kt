@@ -131,6 +131,8 @@ fun Snax(
         positionalThreshold = { it * 0.25f }
     )
 
+    LaunchedEffect(key1 = showSnax) { if (!showSnax) data?.onDismiss?.invoke() }
+
     LaunchedEffect(state.updateState) {
         progress.stop()
         progress.snapTo(1f)

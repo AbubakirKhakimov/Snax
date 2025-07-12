@@ -17,4 +17,5 @@ data class SnaxData(
     val title: String? = null,
     val actionTitle: String? = null,
     val action: (() -> Unit)? = null,
+    val onDismiss: (() -> Unit)? = null
 )
