@@ -48,6 +48,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -90,7 +91,11 @@ fun Snax(
     progressStyle: ProgressStyle = ProgressStyle.LINEAR,
     dismissBehavior: DismissBehavior = DismissBehavior.NOT_DISMISSABLE,
     titleStyle: TextStyle = MaterialTheme.typography.titleLarge,
+    titleMaxLines: Int = Int.MAX_VALUE,
+    titleOverflow: TextOverflow = TextOverflow.Clip,
     messageStyle: TextStyle = MaterialTheme.typography.bodyMedium,
+    messageMaxLines: Int = Int.MAX_VALUE,
+    messageOverflow: TextOverflow = TextOverflow.Clip,
     buttonTextStyle: TextStyle = MaterialTheme.typography.labelLarge,
     shadow: Dp = 8.dp,
     shadowColor: Color = Color.Black.copy(0.8f),
@@ -214,6 +219,8 @@ fun Snax(
                                 text = title,
                                 color = contentColor,
                                 style = titleStyle,
+                                maxLines = titleMaxLines,
+                                overflow = titleOverflow
                             )
                         }
 
@@ -221,6 +228,8 @@ fun Snax(
                             text = data?.message.orEmpty(),
                             color = contentColor,
                             style = messageStyle,
+                            maxLines = messageMaxLines,
+                            overflow = messageOverflow
                         )
                     }
 

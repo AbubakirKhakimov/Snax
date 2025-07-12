@@ -47,7 +47,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId    = "com.github.AbubakirKhakimov"
                 artifactId = "Snax"
-                version    = "1.1.0.1"
+                version    = "1.1.0.2"
             }
         }
     }
