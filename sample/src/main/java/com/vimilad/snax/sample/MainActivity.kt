@@ -30,8 +30,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -283,7 +281,7 @@ class MainActivity : AppCompatActivity() {
                     ) {
                         Snax(
                             state = snaxState,
-                            modifier = Modifier.align(Alignment.BottomCenter),
+                            modifier = Modifier.fillMaxWidth().align(Alignment.BottomCenter),
                             progressStyle = progressStyle,
                             dismissBehavior = if (isDismissable) DismissBehavior.SWIPE_HORIZONTAL else DismissBehavior.NOT_DISMISSABLE,
                             shape = when(shape) {
@@ -378,11 +376,6 @@ fun ItemSelector(
                     style = MaterialTheme.typography.labelMedium,
                 )
             }
-
-            Icon(
-                imageVector = Icons.Default.ArrowDropDown,
-                contentDescription = "Dropdown Icon",
-            )
         }
 
         DropdownMenu(

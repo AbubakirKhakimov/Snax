@@ -124,19 +124,7 @@ fun Snax(
         Color.Transparent
     )
     val finalColors = if (layoutDirection == LayoutDirection.Rtl) colors.reversed() else colors
-
-
-    val dismissState = rememberSwipeToDismissBoxState(
-        confirmValueChange = { newValue ->
-            if (newValue == SwipeToDismissBoxValue.StartToEnd || newValue == SwipeToDismissBoxValue.EndToStart) {
-                showSnax = false
-            }
-            true
-        },
-        positionalThreshold = { it * 0.25f }
-    )
-
-    LaunchedEffect(key1 = showSnax) { if (!showSnax) data?.onDismiss?.invoke() }
+    val dismissState = rememberSwipeToDismissBoxState(positionalThreshold = { it * 0.25f })
 
     LaunchedEffect(state.updateState) {
         progress.stop()
@@ -154,6 +142,7 @@ fun Snax(
 
     LaunchedEffect(showSnax) {
         if (!showSnax) {
+            data?.onDismiss?.invoke()
             scope.launch {
                 delay(500)
                 dismissState.reset()
@@ -166,6 +155,7 @@ fun Snax(
         modifier = modifier,
         gesturesEnabled = dismissBehavior == DismissBehavior.SWIPE_HORIZONTAL,
         backgroundContent = {},
+        onDismiss = { value -> showSnax = false }
     ) {
         AnimatedVisibility(
             visible = showSnax,
